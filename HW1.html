@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Add Course </title>
+</head>
+
+<script>
+"use strict";
+function Dersler(name,midterm, final){
+    this.n= name;
+    this.m= midterm;
+    this.f= final;
+}
+function Add() {
+    let name = n_id.value; 
+    let midterm = Number(m_id.value); 
+    let final = Number(f_id.value); 
+    dersler.push(new Dersler(name, midterm, final));
+}
+function Print() {
+    let print= "";
+    for (let i = 0  ; i < dersler.length ; i++){
+	print += dersler[i].n + "  "+ dersler[i].m + "  "+ dersler[i].f + "\n";  
+    }            
+    s1.innerText = print;
+}
+function Avg() {
+    let avrg= "";
+    let ort= 0;
+    for (let i = 0  ; i < dersler.length ; i++){
+        ort = (dersler[i].m + dersler[i].f ) / 2;
+	avrg += dersler[i].n + " "+ ort + "\n";  
+    }              
+    s2.innerText = avrg;
+}
+function Max() {
+    let max= (dersler[0].m + dersler[0].f)/ 2; 
+    let avrg; 
+    let maxName= dersler[0].n;
+    for (let i = 0  ; i < dersler.length ; i++){
+	avrg = (dersler[i].m + dersler[i].f)/2;
+	if (max<avrg){
+            max = avrg;
+            maxName = dersler[i].n;
+	}
+    }
+    s3.innerText = maxName +" "+max;  
+}
+</script>
+
+<body>
+<h2 id=title></h2>
+
+<p style="margin-bottom: 5px;">
+    <b style="padding-right: 22px;"> Name </b>
+<input type="text" id="n_id" value=" " >
+</p>
+ <p style="
+margin-top:5px;
+margin-bottom: 5px;"
+><b>Midterm </b>
+<input type="text" id="m_id" value="">
+</p>
+
+<p style="margin-top: 5px;
+    margin-bottom: 5px;"> 
+    <b style="padding-right: 25px;">
+        Final </b>
+<input type="text" id="f_id" value=" " >
+</p>
+
+
+<p style="margin-top: 5px;
+    margin-bottom: 5px;
+">
+<input type="button" value="Add" onclick="Add()">
+</p>
+
+<p style="
+    margin-top: 5px;
+    margin-bottom: 5px;
+"></p>
+
+<input type=button value="Print"  onClick="Print()">
+<input type=button value="Avg"  onClick="Avg()">
+<input type=button value="Max"   onClick="Max()">
+</p>
+
+<hr>
+<p style="
+    margin-top: 5px;
+    margin-bottom: 5px;
+"> <b>Name  Midterm  Final </b>
+</p>
+
+<p id=s1></p>
+<hr>
+
+<p style="
+    margin-top: 5px;
+    margin-bottom: 5px;
+"> <b>Name  Average </b>
+
+<p id=s2></p>
+<hr>
+
+<p style="
+    margin-top: 5px;
+    margin-bottom: 5px;
+"> <b>Name  Max </b>
+</p>
+<p id=s3></p>
+<hr>
+<script>
+    title.innerText = document.title;
+    var dersler=[];
+</script>
+
+</body>
+</html>

@@ -13,3 +13,5 @@
 
 <a href="https://gokcedastan.github.io/AdvancedProgrammingHW/database.html" rel="nofollow" >HW2 </a>
 
+<a href="https://gokcedastan.github.io/AdvancedProgrammingHW/timing.html" rel="nofollow" >CW6 </a>
+

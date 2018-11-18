@@ -1,0 +1,63 @@
+
+<html>
+ 
+
+  <body>
+    <h1>Gokce's Colorful Animation</h1>
+
+    
+    <style >
+    .box {
+      width: 100px;
+      height: 100px;
+      display:inline-block;
+      background: #000;
+    }
+    </style>
+
+    <div id="boxes">
+      <div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+      <div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+      <div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+    </div>
+
+    <script >
+    var eventHandler = function(event) {
+      var element = event.target;
+      if (!element || !element.classList.contains('box'))
+          return;
+      // Random olarak arka plan rengini alma.
+      var color = Math.random() * 360;
+      var target = 'hsl(' + color + ', 100%, 50%)';
+      
+      var keyframes = [
+        { background: '#eee' },
+        { background: target }
+      ];
+        //renk geçiş hızı
+      var options = 150;
+      var animation=element.animate(keyframes, options);
+    };
+    var boxes = document.getElementById('boxes');
+    boxes.addEventListener('mouseover', eventHandler);
+    
+    </script>
+     <h2>Thanks for watching :))))))</h2>
+    <script>
+      
+    </script>
+    
+  </body>
+</html>

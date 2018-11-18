@@ -15,3 +15,5 @@
 
 <a href="https://gokcedastan.github.io/AdvancedProgrammingHW/timing.html" rel="nofollow" >CW6 </a>
 
+<a href="https://gokcedastan.github.io/AdvancedProgrammingHW/hw3.html" rel="nofollow" >HW3 </a>
+

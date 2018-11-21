@@ -1,0 +1,60 @@
+<!doctype html>
+<meta charset="utf8">
+
+<h1>TABLE PERSONAL</h1>
+<link rel="manifest" href="manifest.json">
+<div id="personal"></div>
+<script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('https://gokcedastan.github.io/AdvancedProgrammingHW/sw.js')
+        .then((reg) => { console.log('SW Registered', reg) })
+        .catch(console.log)
+    }
+  </script>
+<script>
+  const PERSONAL = [
+    {name: "Gokce", age:  22 , department: "  Ortopedi"},
+    {name: "Merve", age:  52 , department: "  Fizik"},
+    {name: "Gozde", age:  45 , department: "  Kulak Burun Boğaz"},
+    {name: "Sinem", age:  35 , department: "  Ortopedi"},
+    {name: "Fadime",age: 70 , department:"    Onkoloji"},
+    {name: "Kübra", age:  25 , department: "  Psikloji"},
+    {name: "Semra", age: 70 , department:"    Genel Diş"}
+  ];
+  function buildTable(data) {
+    let table = document.createElement("table");
+  
+    let fields = Object.keys(data[0]);
+    let headRow = document.createElement("tr");
+    fields.forEach(function(field) {
+      let headCell = document.createElement("th");
+      headCell.textContent = field;
+      headRow.appendChild(headCell);
+    });
+    table.appendChild(headRow);
+    data.forEach(function(object) {
+      let row = document.createElement("tr");
+      fields.forEach(function(field) {
+        let cell = document.createElement("td");
+        cell.textContent = object[field];
+        if (typeof object[field] == "number") {
+          cell.style.textAlign = "right";
+        }
+        row.appendChild(cell);
+      });
+      table.appendChild(row);
+    });
+    return table;
+  }
+  document.querySelector("#personal")
+    .appendChild(buildTable(PERSONAL));
+</script>
+<body>
+<p> 
+<a href="https://gokcedastan.github.io/AdvancedProgrammingHW/hw3.html" rel="nofollow" >HW3 </a> </p>
+<p><a href="https://gokcedastan.github.io/AdvancedProgrammingHW/" rel="nofollow" >Github Repo </a> </p>
+<p> <a href="https://gokcedastan.github.io/AdvancedProgrammingHW/cw7.html" rel="nofollow" >CW7 </a> </p>
+
+
+</body>

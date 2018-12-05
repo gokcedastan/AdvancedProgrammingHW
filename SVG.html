@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>SVG and Canvas </title>
+
+  <style>
+    svg, canvas {
+        background: cyan;
+        font: 10px arial, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>CW9: Using SVG</h2>
+<svg id='svg' width='500' height='200'>
+  <circle id="circle1" cx='100' cy='100' r='40'
+  style='fill:red;stroke:black;stroke-width:4' />
+  <text x='85' y='100' fill='black'>Circle</text>
+  <rect id="rect1" x='300' y='57' width='100' height='80'
+  style='fill:black;stroke:red;stroke-width:5' />
+  <text x='330' y='100' fill='white'>Rect</text>
+</svg>
+<p>Circle fill color :<input id="circleFill" type="color" value="#ff0000"> 
+ Radius :<input type="number" value=40 onchange="circleRadius(this)"></p>
+<hr />
+
+<p>
+<button onclick="circle1.style.stroke= 'white';">Change circle stroke color</button>
+
+
+
+<button onclick="rect1.style.stroke= 'yellow';">Change rect stroke color</button>
+</p>
+
+<p>Change circle color:
+<input id="colorPicker" type="color" value="#ff0000">
+</p>
+<script>
+"use strict";
+function circleRadius(elem){
+     circle1.setAttribute("r",elem.value);
+    }
+circleFill.addEventListener("change", circleFillEvent, false);
+    function circleFillEvent(event) {
+        circle1.style.fill=event.target.value;
+    }
+function updateFirst(event) {
+  var p = document.querySelector("p");
+
+  if (p) {
+    circle1.style.fill=event.target.value;
+  }
+}
+
+colorPicker.addEventListener("input", updateFirst, false);
+colorPicker.addEventListener("change", watchColorPicker, false);
+
+function watchColorPicker(event) {
+  document.querySelectorAll("circle1").forEach(function(circle1) {
+    circle1.style.fill=event.target.value;
+  });
+}
+
+
+</script>
+
+</body>
+

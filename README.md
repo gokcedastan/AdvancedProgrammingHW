@@ -21,5 +21,5 @@
 
 <a href="https://gokcedastan.github.io/AdvancedProgrammingHW/index.html" rel="nofollow" >HW4 </a>
 
-<a href="https://gokcedastan.github.io/AdvancedProgrammingHW/CW7/SVG.html" rel="nofollow" >CW9 </a>
+<a href="https://gokcedastan.github.io/AdvancedProgrammingHW/SVG.html" rel="nofollow" >CW9 </a>
 

@@ -22,7 +22,7 @@ body,table,tr,td,div
     border: 0px;
 }
 
-b
+
 {
     color: #FFFFFF;
     font-weight: bold;
@@ -41,28 +41,12 @@ b
     margin: 0 auto;
 }
 
-#DemoReturnButton
-{
-    position: relative;
-    display: block;
-    margin: 0 0 0 auto;
-    width: 210px;
-    height: 29px;
-    text-indent: -9999px;
-   
-}
-
-#DemoReturnButton:hover
-{
-    
-}
-
 #PageTitle
 {
     font-family: Segoe UI, Arial;
     font-weight: normal;
     color: #8B008B;
-    font-size: 53px;
+    font-size: 63px;
 }
 
 a
@@ -125,14 +109,14 @@ a:hover
 
 td.boardCellGroupA,td.boardCellGroupB
 {
-    background-color: #9457EB;
+    background-color: #940302;
 }
 
 td.boardCellGroupA td.boardCell
 {
     width: 44px;
     height: 44px;
-    border: 1px solid #9457EB;
+    border: 1px solid #EC0904;
     background-color: #DA0603;
 }
 
@@ -140,7 +124,7 @@ td.boardCellGroupB td.boardCell
 {
     width: 44px;
     height: 44px;
-    border: 1px solid #D40703;
+    border: 1px solid #9457EB;
     background-color: #C40502;
 }
 
@@ -170,7 +154,7 @@ td.boardCellGroupB td.boardCell
 label
 {
     position: relative;
-    top: 4px;
+    top: 3px;
     line-height: 24px;
     font-size: 15px;
     color: #8B008B;
@@ -179,16 +163,16 @@ label
 select
 {
     font-family: Arial;
-    color: #999999;
+    color: #8B008B;
     font-weight: normal;
     font-size: 12px;
-    border-top: solid 1px #CCCCCC;
-    border-left: solid 1px #E2E3EA;
-    border-bottom: solid 1px #FFFFFF;
-    border-right: solid 1px #E2E3EA;
-    margin: 3px 0px;
+    border-top: solid 1px #8B008B;
+    border-left: solid 1px #8B008B;
+    border-bottom: solid 1px #000000;
+    border-right: solid 1px #8B008B;
+    margin: 5px 0px;
     min-width: 100px;
-    background: #000000;
+    background: pink;
 }
 
 
@@ -212,12 +196,11 @@ input[type="submit"]
 {
     font-family: Arial;
     font-size: 18px;
-    color: #FFFFFF;
+    color: black;
     text-transform: uppercase;
     border: 0px;
     min-width: 162px;
     min-height: 34px;
-
     margin: 8px 0px;
     cursor: pointer;
 }
@@ -226,12 +209,11 @@ input[type="submit"].gameControls
 {
     font-family: Arial;
     font-size: 16px;
-    color: #FFFFFF;
+    color: #black;
     text-transform: uppercase;
     border: 0px;
     min-width: 28px;
     min-height: 28px;
-    
     margin: 8px 0px;
     padding: 2px 16px;
     cursor: pointer;
@@ -247,14 +229,32 @@ input[type="submit"].gameControls
 #buttonSolve
 {
     margin-top: 119px;
-    color: #FFAEAE;
+    color: #8B008B;
 }
+
 
 
 small
 {
     font-size: 14px;
-    color: #9932CC;
+    color: #FFFD7B;
 }
 
+.noErrors
+{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
 
+.errorsFound
+{
+    font-size: 18px;
+    font-weight: bold;
+    color: #ED823F;
+}
+
+.error
+{
+    border: 1px solid black;
+}

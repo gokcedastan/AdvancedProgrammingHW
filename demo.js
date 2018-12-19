@@ -801,21 +801,6 @@ function initialize() {
     
   }, false);
   
-  var winCloseButton = document.getElementById('winCloseButton');
-  
-  winCloseButton.addEventListener('click', function() {
-    winBlock.style.display = 'none';
-  }, false);
-  
-  var winNewGameButton = document.getElementById('winNewGameButton');
-  
-  winNewGameButton.addEventListener('click', function() {
-    clearErrors();
-    var value = parseInt(difficulty.options[difficulty.selectedIndex].value);
-    currentPuzzle = generatePuzzle(value);
-    renderBoard(currentPuzzle);
-    winBlock.style.display = 'none';
-  }, false);
   
   var newGameButton = document.getElementById('newGameButton');
   

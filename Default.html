@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<title>Sudoku</title>        
+	<title>Sudoku</title>        
         <meta http-equiv="Content-Language" content="en-us" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="application-name" content="Sudoku" />
         <meta name="msapplication-navbutton-color" content="#C40502" />
-     
-
         <link rel="stylesheet" type="text/css" href="Demo.css" />
-        <link rel="shortcut icon" href="favicon.ico" />
     </head>
     <body>
         <div id="Wrapper">
             <div id="Main">
-                <div id="HeadingSection">
-                    <div id="HeadingContents">
-                        <div id="ReturnAndShareControls"></div>
-                        <h1 id="PageTitle">Sudoku</h1>
-                    </div>
-                </div>
+            	<h1 id="PageTitle">Sudoku</h1>
                 <div id="Content">
                     <div id="Column1">
-                  
+                       
                         <br/>
                         <br/>
                         <br/>
                         
-                     
+                        
                         <br/>
                         <br/>
-                      
-                
+                        <div id="calculating" style="display: none;">
+                           
+                        </div>
+                        <div role="tab" aria-selected="true" aria-controls="perfResults" tabindex="200" id="finishedCalculating" style="display: none;">
+                          
+                            <br/>
+                            
+                        </div>
                     </div>
                     <div id="sudokuBoard">
                         <table cellspacing="0" cellpadding="0">
@@ -549,14 +547,14 @@
                                 <option value="1" selected>Easy</option>
                                 <option value="2">Medium</option>
                                 <option value="3">Hard</option>
-
+                                
                             </select>
                         </div>
                         <div class="gameControlSet">
                             <input id="checkButton" type="submit" value="CHECK &#x2713;" class="gameControls"/>
                             <br/>
-                            <span id="errorsFound" class="errorsFound" style="display: none;" role="tab" aria-selected="true" aria-controls="ErrorsFound" tabindex="300">MISTAKE FOUND</span>
-                            <span id="noErrors" class="noErrors" style="display: none;" role="tab" aria-selected="true" aria-controls="NoErrorsFound" tabindex="400">LOOKIN GOOD</span>
+                            <span id="errorsFound" class="errorsFound" style="display: none;" role="tab" aria-selected="true" aria-controls="ErrorsFound" tabindex="300">MISTAKE</span>
+                            <span id="noErrors" class="noErrors" style="display: none;" role="tab" aria-selected="true" aria-controls="NoErrorsFound" tabindex="400">GOOD</span>
                         </div>
                         <div class="gameControlSet">
                             <input id="solveButton" type="submit" value="SOLVE" class="gameControls"/>
@@ -565,9 +563,16 @@
                 </div>
             </div>
         </div>
-   
-
-     
-     
+            <div>
+               
+                <br/>
+               
+                <br/>
+                <br/>
+                <input id="winNewGameButton" type="submit" value="NEW GAME" class="gameControls"/>
+                <input id="winCloseButton" type="submit" value="CLOSE" class="gameControls"/>
+            </div>
+        </div>
+        <script type="text/javascript" src="demo.js"></script>
     </body>
 </html>

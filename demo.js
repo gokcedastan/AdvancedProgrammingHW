@@ -16,7 +16,7 @@ function solveSudoku(inputBoard, stats) {
   var mutated = false;
   var needCheckFreedoms = false;
   
-  
+  //puzzle giriş kontrolü
   var loopCount = 0;
   
   outerLoop: while(!solved && !impossible) {
@@ -99,13 +99,13 @@ function solveSudoku(inputBoard, stats) {
     }
     
     if(mutated === false && solved === false) {
-      
+      //
       if(needCheckFreedoms === false) {
         needCheckFreedoms = true;
         stats['medium'] = true;
         continue;
       }
-      
+      //tahmin
       return solveByGuessing(board, possibilities, leastFree, stats);
       
     }
@@ -135,7 +135,7 @@ function getZone(i) {
 function reducePossibilities(board, row, column, currentPos, zoneRow, zoneCol) {
 
   var mutated = false;
-
+// sütun ve satırda alınmış öğeleri elemek
   for(var k = 0; k < 9; k++) {
     if(currentPos[board[row][k]] || currentPos[board[k][column]]) {
       mutated = true;
@@ -143,8 +143,8 @@ function reducePossibilities(board, row, column, currentPos, zoneRow, zoneCol) {
     currentPos[board[row][k]] = false;
     currentPos[board[k][column]] = false;
   }
-  
-  for(var x = zoneRow; x <= (zoneRow + 2); x++) {
+  // bölgede zaten çekilen öğeleri ele
+  for(var x = zoneRow; x <= (zoneRow + 2); x++) {
     for(var y = zoneCol; y <= (zoneCol + 2); y++) {
       var zoneDigit = board[x][y];
       
@@ -163,7 +163,7 @@ function checkFreedoms(board, i, j, possibilities, zoneRow, zoneCol) {
 
   var answer = 0;
   var currentPos = possibilities[i][j];
-          
+// sadece bir karenin bir olasılığı
   var uniquePosRow = currentPos.slice(0);
   var uniquePosCol = currentPos.slice(0);
   var uniquePosCube = currentPos.slice(0);
@@ -239,13 +239,11 @@ function solveByGuessing(board, possibilities, leastFree, stats) {
   }
   
   if('hard' in stats) {
-    stats['vhard'] = true;
-  }
-  else {
+    
     stats['hard'] = true;
   }
-  
-  var randIndex = getRandom(leastFree.length);
+  // En az olasılıkla # olan bir alan seçme
+  var randIndex = getRandom(leastFree.length);
   var randSpot = leastFree[randIndex];
   
   var guesses = [];
@@ -266,11 +264,10 @@ function solveByGuessing(board, possibilities, leastFree, stats) {
       return result;
     }
   }
-  
-  return null;
+    // board is impossible
+    return null;
 }
-
-
+// sınırlamak için 0 aralığında bir rastgele sayı döndürür - 1 dahil
 function getRandom(limit) {
   return Math.floor(Math.random() * limit);
 }
@@ -287,9 +284,9 @@ function shuffleArray(array) {
     }
   }
 }
-
+//kıyaslama için random bir sınıf kullanma
 (function() {
-
+ // başlamak için bazı kukla değerler
   var last = 31337;
   var randomBackup = Math.random;
 
@@ -321,10 +318,9 @@ function shuffleArray(array) {
 
 
 function generatePuzzle(difficulty) {
-  
+  //secilmediyse easy puzzle geliyor
   if(difficulty !== 1 && difficulty !== 2 && 
-    difficulty !== 3 && difficulty !== 4  && 
-    difficulty !== 5) {
+    difficulty !== 3) {
       
     difficulty = 1;
   }
@@ -342,11 +338,12 @@ function generatePuzzle(difficulty) {
   var knownCount = 81;
   
   for(var i = 0; i < 81; i++) {
-    
+    //25 ten az rakam gelmemesi için
     if(knownCount <= 25) {
       break;
     }
-    
+    //easy de 35rakam geliyor
+      //medium ve hard 25
     if(difficulty == 1 && knownCount <= 35) {
       break;
     }
@@ -363,12 +360,9 @@ function generatePuzzle(difficulty) {
     var undo = false;
     if(difficulty <= 2 && state.medium) {
       undo = true;
-    } else if(difficulty <= 3 && state.hard) {
-      undo = true;
-    } else if(difficulty <= 4 && state.vhard) {
+    } else if(difficulty >2 && state.hard) {
       undo = true;
     }
-    
     if(undo) {
       solvedPuzzle[row][col] = currentValue;
     }
@@ -600,7 +594,7 @@ function renderBoard(board) {
     }
   }
 }
-
+// algoritma, kullanıcı için çözdüğü zaman panoya özel bir yol sunar
 function renderSolvedBoard(board) {
   for(var i = 0; i < 9; i++) {
     for(var j = 0; j < 9; j++) {
@@ -709,11 +703,7 @@ function solveTestHelper(puzzle, iterations) {
   for(var i = 0; i < iterations; i++) {
     solution = solveSudoku(puzzle);
   }
-  var end = new Date();
-  renderBoard(puzzle);
-  renderSolvedBoard(solution);
-  var timeElapsed = (end.getTime() - start.getTime()) / 1000;
-  return timeElapsed;
+  
 }
 
 function initialize() {
@@ -721,8 +711,6 @@ function initialize() {
   var currentPuzzle = generatePuzzle();
   renderBoard(currentPuzzle);
   
-  var calculatingDiv = document.getElementById('calculating');
-  var finishedCalculatingDiv = document.getElementById('finishedCalculating');
   var noErrorsSpan = document.getElementById('noErrors');
   var errorsFoundSpan = document.getElementById('errorsFound');
   var difficulty = document.getElementById('difficulty');
@@ -742,7 +730,7 @@ function initialize() {
   
  
   
-  var checkButton = document.getElementById('checkButton');
+  var checkButton = document.getElementById('check');
   
   checkButton.addEventListener('click', function() {
     
@@ -752,18 +740,18 @@ function initialize() {
     var result = verifySolution(board);
     if(result['valid']) {
     
-      var validMessages = [ "EXCELLENT", "NICE","GOOD"];
+      var validMessages = [ "EXCELLENT", "NICE"];
       
       if(verifySolution(board, true)['valid']) {
         winBlock.style.display = 'block';
       }
       else {
-        var randIndex = getRandom(validMessages.length);
-        noErrorsSpan.textContent = validMessages[randIndex];
+        var randIndex = getRandom(validMessages.length); //random control message
+        noErrorsSpan.textContent = validMessages[randIndex]; //atadım
         noErrorsSpan.style.display = 'block';
       }
     }
-    else {
+    else {  // satirda ayni 2 sayi kontrolü
       if('badRow' in result) {
         var row = result['badRow'];
         for(var i = 0; i < 9; i++) {
@@ -772,7 +760,7 @@ function initialize() {
           el.setAttribute("class", el.getAttribute('class') + " error");
           currentErrors.push(el);
         }
-      }
+      } //sutunda aynı iki sayi kontrolü
       else if('badCol' in result) {
         var col = result['badCol'];
         for(var i = 0; i < 9; i++) {
@@ -781,7 +769,8 @@ function initialize() {
           el.setAttribute("class", el.getAttribute('class') + " error");
           currentErrors.push(el);
         }
-      }
+      }       //küpün içinde  aynı iki sayi kontrolü
+
       else if('badCube' in result) {
         var cubeRow = result['badCube'][0];
         var cubeCol = result['badCube'][1];
@@ -802,7 +791,7 @@ function initialize() {
   }, false);
   
   
-  var newGameButton = document.getElementById('newGameButton');
+  var newGameButton = document.getElementById('newGame');
   
   newGameButton.addEventListener('click', function() {
     clearErrors();
@@ -811,7 +800,7 @@ function initialize() {
     renderBoard(currentPuzzle);
   }, false);
   
-  var solveButton = document.getElementById('solveButton');
+  var solveButton = document.getElementById('solve');
   
   solveButton.addEventListener('click', function() {
     clearErrors();

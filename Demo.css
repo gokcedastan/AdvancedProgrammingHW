@@ -226,6 +226,8 @@ input[type="submit"].gameControls
     top: -8px;
 }
 
+
+
 #buttonSolve
 {
     margin-top: 119px;
@@ -244,17 +246,17 @@ small
 {
     font-size: 18px;
     font-weight: bold;
-    color: black;
+    color: green;
 }
 
 .errorsFound
 {
     font-size: 18px;
     font-weight: bold;
-    color: #ED823F;
+    color: red;
 }
 
 .error
 {
-    border: 1px solid black;
+    border: 1px solid white;
 }

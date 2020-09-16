@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" "text-align:center">
+    <title>Hasta Bilgileri </title>
+</head>
+
+<script>
+"use strict";
+function HastaBilgi(Tc, name,surname, phone, Deviceid){
+    this.tc=Tc;
+    this.n= name;
+    this.s= surname;
+    this.p=phone;
+	this.Did=Deviceid;
+}
+function Save() {
+    let TC = Number(tc_id.value);
+    let name = n_id.value; 
+	let surname = s_id.value; 
+    let phone = Number(p_id.value); 
+    let Deviceid = Number(de_id_id.value); 
+    bilgiler.push(new HastaBilgi(Tc, name, surname, phone, Deviceid));
+}
+
+function  Print ( )  {
+    let  print =  "" ;
+    for  ( let  i  =  0   ;  i  <  bilgiler.length  ;  i ++ ) {
+	print  + = bilgiler [ i ] . tc + bilgiler [ i ] . n  +  "" +  bilgiler [ i ] . s +  "" +  bilgiler [ i ] . p  +  bilgiler [ i ] . Did  +"\ n" ;  
+    }            
+    s1 . innerText  =  print ;
+}
+
+</script>
+
+<body>
+<h2 id=title></h2>
+<p style="margin-bottom: 20px;">
+    <b style="padding-right: 82px;"> TC NO: </b>
+<input type="text" id="tc_id" value=" " >
+</p>
+<p style="margin-bottom: 20px;">
+    <b style="padding-right: 110px;"> AD: </b>
+<input type="text" id="n_id" value=" " >
+</p>
+ <p style="
+margin-top:5px;
+margin-bottom: 20px;"
+><b style="padding-right: 92px;">Soyad: </b>
+<input type="text" id="s_id" value="">
+</p>
+
+ <p style="
+margin-top:5px;
+margin-bottom: 20px;"
+><b style="padding-right: 83px;">Telefon: </b>
+<input type="text" id="p_id" value="">
+</p>
+
+<p style="margin-top: 20px;
+    margin-bottom: 5px;"> 
+    <b style="padding-right: 73px;">
+        Cihaz Id: </b>
+<input type="text" id="de_id" value=" " >
+</p>
+
+
+<p style="margin-top: 20px;
+    margin-bottom: 5px;
+">
+<input type="button" value="Save" ; onclick="Save()">
+</p>
+<p style="
+    margin-top: 5px;
+    margin-bottom: 5px;
+"></p>
+<input type=button value="Print"  onClick="Print()">
+</p>
+
+<hr>
+<p style="
+    margin-top: 5px;
+    margin-bottom: 5px;
+"> <b>Tc  Ad   Soyad   Telefon   Cihaz ID </b>
+</p>
+
+<p id=s1></p>
+<hr>
+
+<script>
+    title.innerText = document.title;
+    var bilgiler=[];
+</script>
+
+</body>
+</html>

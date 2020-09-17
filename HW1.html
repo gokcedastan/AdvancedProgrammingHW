@@ -21,13 +21,13 @@ function Save() {
     let surname = s_id.value; 
     let phone = Number(p_id.value);
     let deviceID= Number(devId.value);
-    
+    patient.push(new PatientInfo(Id,name,surname,phone, deviceID)); 
+
 }
 function Print() {
     let print= "";
     for (let i = 0  ; i < patient.length ; i++){
 	print += patient[i].id +patient[i].n + "  "+ patient[i].s + "  "+ patient[i].p + patient[i].Did +"\n";
-        patient.push(new PatientInfo(Id,name,surname,phone, deviceID)); 
     }            
     s1.innerText = print;
 }

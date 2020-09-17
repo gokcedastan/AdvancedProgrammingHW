@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Add Course </title>
+    <title>Patient Registration </title>
 </head>
 
 <script>
 "use strict";
-function Dersler(name,midterm, final){
+function PatientInfo(Id,name,surname,phone, deviceID){
+    this.id=Id;
     this.n= name;
-    this.m= midterm;
-    this.f= final;
+    this.s= surname;
+    this.p= phone;
+    this.Did=deviceID;	
 }
-function Add() {
+function Save() {
+    let Id = Number(id_id.value); 	
     let name = n_id.value; 
-    let midterm = Number(m_id.value); 
-    let final = Number(f_id.value); 
-    dersler.push(new Dersler(name, midterm, final));
+    let surname = s_id.value; 
+    let phone = Number(p_id.value);
+    let deviceID= Number(devId.value);
+    patient.push(new PatientInfo(Id,name,surname,phone, deviceID));
 }
 function Print() {
     let print= "";
-    for (let i = 0  ; i < dersler.length ; i++){
-	print += dersler[i].n + "  "+ dersler[i].m + "  "+ dersler[i].f + "\n";  
+    for (let i = 0  ; i < patient.length ; i++){
+	print += patient[i].id +patient[i].n + "  "+ patient[i].s + "  "+ patient[i].p + patient[i].Did +"\n";  
     }            
     s1.innerText = print;
 }
@@ -52,30 +56,39 @@ function Max() {
 
 <body>
 <h2 id=title></h2>
-
+ <p style="margin-top:5px;
+margin-bottom: 5px;"
+><b>ID </b>
+<input type="text" id="id_id" value="">
+</p>
 <p style="margin-bottom: 5px;">
     <b style="padding-right: 22px;"> Name </b>
 <input type="text" id="n_id" value=" " >
 </p>
- <p style="
-margin-top:5px;
+
+<p style="margin-bottom: 5px;">
+    <b style="padding-right: 22px;"> Surname </b>
+<input type="text" id="s_id" value=" " >
+</p>
+	
+ <p style="margin-top:5px;
 margin-bottom: 5px;"
-><b>Midterm </b>
-<input type="text" id="m_id" value="">
+><b>Phone </b>
+<input type="text" id="p_id" value="">
 </p>
 
 <p style="margin-top: 5px;
     margin-bottom: 5px;"> 
     <b style="padding-right: 25px;">
-        Final </b>
-<input type="text" id="f_id" value=" " >
+        Device ID </b>
+<input type="text" id="devId" value=" " >
 </p>
 
 
 <p style="margin-top: 5px;
     margin-bottom: 5px;
 ">
-<input type="button" value="Add" onclick="Add()">
+<input type="button" value="Save" onclick="Save()">
 </p>
 
 <p style="
@@ -92,7 +105,7 @@ margin-bottom: 5px;"
 <p style="
     margin-top: 5px;
     margin-bottom: 5px;
-"> <b>Name  Midterm  Final </b>
+"> <b>ID Name  Surname Phone DeviceID </b>
 </p>
 
 <p id=s1></p>
@@ -115,7 +128,7 @@ margin-bottom: 5px;"
 <hr>
 <script>
     title.innerText = document.title;
-    var dersler=[];
+    var patient=[];
 </script>
 
 </body>
